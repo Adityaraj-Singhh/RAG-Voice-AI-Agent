@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { formatPhoneNumber, cleanPhoneNumber } from '../utils/formatters';
 
 /**
@@ -104,7 +104,7 @@ const PhoneInput = ({
   };
 
   // Register the field with react-hook-form
-  const { ref, ...registerProps } = register('phoneNumber', validation);
+  const { ref } = register('phoneNumber', validation);
 
   return (
     <div className="space-y-2">

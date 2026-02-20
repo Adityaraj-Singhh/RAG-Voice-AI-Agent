@@ -140,10 +140,12 @@ export const validateForm = (formData) => {
   };
 };
 
-export default {
+const validators = {
   validateName,
   validateEmail,
   validatePhone,
   validateStream,
   validateForm
 };
+
+export default validators;

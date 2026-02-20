@@ -132,7 +132,7 @@ export const getInitials = (name) => {
   return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
 };
 
-export default {
+const formatters = {
   cleanPhoneNumber,
   formatPhoneNumber,
   formatPhoneWithCountryCode,
@@ -143,3 +143,5 @@ export default {
   formatEmail,
   getInitials
 };
+
+export default formatters;

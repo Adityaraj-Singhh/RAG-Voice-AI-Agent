@@ -16,7 +16,7 @@ const LeadForm = ({ onSuccess }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, touchedFields },
+    formState: { errors, touchedFields },
     reset,
     watch,
     setValue,
