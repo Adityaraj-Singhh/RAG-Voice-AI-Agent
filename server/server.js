@@ -35,7 +35,30 @@ app.use(helmet({
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      process.env.FRONTEND_URL,
+      'http://localhost:3000',
+      'http://localhost:5000',
+      /\.vercel\.app$/  // Allow any Vercel deployment
+    ];
+    
+    const isAllowed = allowedOrigins.some(allowedOrigin => {
+      if (allowedOrigin instanceof RegExp) {
+        return allowedOrigin.test(origin);
+      }
+      return allowedOrigin === origin;
+    });
+    
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
@@ -87,38 +110,41 @@ app.use(notFoundHandler);
 // Global error handler
 app.use(errorHandler);
 
-// Start server
+// Start server (only when not in Vercel serverless environment)
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(PORT, () => {
-  console.log('');
-  console.log('🎓 ================================================');
-  console.log('   University Lead Generation Server');
-  console.log('🎓 ================================================');
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🌐 API URL: http://localhost:${PORT}`);
-  console.log(`💚 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`📝 Leads endpoint: http://localhost:${PORT}/api/leads`);
-  console.log('🎓 ================================================');
-  console.log('');
-});
+// Only start server if not running as a Vercel serverless function
+if (process.env.VERCEL !== '1') {
+  const server = app.listen(PORT, () => {
+    console.log('');
+    console.log('🎓 ================================================');
+    console.log('   University Lead Generation Server');
+    console.log('🎓 ================================================');
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🌐 API URL: http://localhost:${PORT}`);
+    console.log(`💚 Health check: http://localhost:${PORT}/api/health`);
+    console.log(`📝 Leads endpoint: http://localhost:${PORT}/api/leads`);
+    console.log('🎓 ================================================');
+    console.log('');
+  });
 
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err) => {
-  console.error('❌ Unhandled Rejection:', err.message);
-  console.error(err.stack);
-  // Close server & exit process
-  server.close(() => {
+  // Handle unhandled promise rejections
+  process.on('unhandledRejection', (err) => {
+    console.error('❌ Unhandled Rejection:', err.message);
+    console.error(err.stack);
+    // Close server & exit process
+    server.close(() => {
+      process.exit(1);
+    });
+  });
+
+  // Handle uncaught exceptions
+  process.on('uncaughtException', (err) => {
+    console.error('❌ Uncaught Exception:', err.message);
+    console.error(err.stack);
     process.exit(1);
   });
-});
-
-// Handle uncaught exceptions
-process.on('uncaughtException', (err) => {
-  console.error('❌ Uncaught Exception:', err.message);
-  console.error(err.stack);
-  process.exit(1);
-});
+}
 
 module.exports = app;
