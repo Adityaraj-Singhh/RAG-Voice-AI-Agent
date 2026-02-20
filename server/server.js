@@ -25,8 +25,23 @@ const app = express();
 // Trust proxy for rate limiting behind reverse proxy
 app.set('trust proxy', 1);
 
-// Connect to MongoDB
-connectDB();
+// Initialize database connection (will be reused in serverless)
+let dbInitialized = false;
+
+const initializeDB = async () => {
+  if (!dbInitialized) {
+    await connectDB();
+    dbInitialized = true;
+  }
+};
+
+// Connect on startup for traditional server
+if (process.env.VERCEL !== '1') {
+  initializeDB().catch(err => {
+    console.error('Failed to initialize database:', err);
+    process.exit(1);
+  });
+}
 
 // Security middleware
 app.use(helmet({
@@ -76,6 +91,21 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // Apply general rate limiting to all routes
 app.use(generalLimiter);
+
+// Database connection middleware for serverless
+app.use(async (req, res, next) => {
+  try {
+    await initializeDB();
+    next();
+  } catch (error) {
+    console.error('Database connection failed:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Database connection failed',
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+    });
+  }
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

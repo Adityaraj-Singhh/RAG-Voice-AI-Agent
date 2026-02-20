@@ -1,67 +1,67 @@
 /**
  * MongoDB Database Configuration
  * Handles connection to MongoDB with connection pooling and error handling
+ * Optimized for serverless environments (Vercel, AWS Lambda, etc.)
  */
 
 const mongoose = require('mongoose');
 
+let isConnected = false; // Track connection status
+
 /**
  * Connect to MongoDB database
+ * Reuses existing connection in serverless environments
  * @returns {Promise<void>}
  */
 const connectDB = async () => {
+  // Reuse existing connection if available (important for serverless)
+  if (isConnected && mongoose.connection.readyState === 1) {
+    console.log('♻️ Using existing MongoDB connection');
+    return;
+  }
+
   try {
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/university-leads';
     
-    // MongoDB connection options with connection pooling
+    if (!mongoURI) {
+      throw new Error('MONGODB_URI is not defined');
+    }
+
+    // MongoDB connection options optimized for serverless
     const options = {
-      maxPoolSize: 10, // Maintain up to 10 socket connections
-      serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
-      socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
-      family: 4 // Use IPv4, skip trying IPv6
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 10000, // 10 seconds for serverless
+      socketTimeoutMS: 45000,
+      family: 4,
+      bufferCommands: false, // Disable mongoose buffering
     };
 
-    const conn = await mongoose.connect(mongoURI, options);
+    await mongoose.connect(mongoURI, options);
+    isConnected = true;
 
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-    console.log(`📊 Database: ${conn.connection.name}`);
-
-    // Drop the unique index on phoneNumber to allow duplicate submissions
-    try {
-      const Lead = require('../models/Lead');
-      await Lead.collection.dropIndex('phoneNumber_1');
-      console.log('✅ Dropped unique index on phoneNumber');
-    } catch (indexError) {
-      // Index might not exist or already dropped
-      if (indexError.code !== 27) { // 27 = IndexNotFound
-        console.log('ℹ️ phoneNumber index already removed or does not exist');
-      }
-    }
+    console.log(`✅ MongoDB Connected: ${mongoose.connection.host}`);
+    console.log(`📊 Database: ${mongoose.connection.name}`);
 
     // Handle connection events
     mongoose.connection.on('connected', () => {
+      isConnected = true;
       console.log('🔗 Mongoose connected to MongoDB');
     });
 
     mongoose.connection.on('error', (err) => {
+      isConnected = false;
       console.error(`❌ Mongoose connection error: ${err.message}`);
     });
 
     mongoose.connection.on('disconnected', () => {
+      isConnected = false;
       console.log('⚠️ Mongoose disconnected from MongoDB');
     });
 
-    // Handle application termination
-    process.on('SIGINT', async () => {
-      await mongoose.connection.close();
-      console.log('🛑 MongoDB connection closed through app termination');
-      process.exit(0);
-    });
-
   } catch (error) {
+    isConnected = false;
     console.error(`❌ MongoDB Connection Error: ${error.message}`);
-    // Exit process with failure
-    process.exit(1);
+    throw error; // Re-throw to be handled by calling function
   }
 };
 
