@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend server for University Lead Generation System with N8N and VAPI integration",
   "main": "server.js",
+  "type":"module",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
