@@ -80,7 +80,7 @@ const LandingPage = ({ onFormSuccess }) => {
             <div className="flex items-center gap-3">
               <button
                 onClick={scrollToForm}
-                className="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+                className="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg transition-all transform hover:scale-105 shadow-lg text-sm sm:text-base"
               >
                 Apply Now
               </button>
@@ -122,7 +122,7 @@ const LandingPage = ({ onFormSuccess }) => {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-300 rounded-full filter blur-3xl"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 py-16 lg:py-24">
+        <div className="relative max-w-7xl mx-auto px-4 py-10 sm:py-16 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="animate-fade-in">
@@ -131,12 +131,12 @@ const LandingPage = ({ onFormSuccess }) => {
                 <span className="text-sm font-medium">Admissions Open for 2026 Batch</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-4 sm:mb-6">
                 Transform Your
                 <span className="block text-secondary-400">Future With Us</span>
               </h1>
               
-              <p className="text-lg text-white/80 mb-8 max-w-lg leading-relaxed">
+              <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
                 Join India's premier institution for world-class education. Experience excellence in learning with state-of-the-art facilities and industry-ready curriculum.
               </p>
 
@@ -159,26 +159,26 @@ const LandingPage = ({ onFormSuccess }) => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6">
                 <div className="text-center sm:text-left">
-                  <div className="text-3xl md:text-4xl font-bold text-secondary-400">50K+</div>
-                  <div className="text-sm text-white/60">Alumni Worldwide</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-400">50K+</div>
+                  <div className="text-xs sm:text-sm text-white/60">Alumni Worldwide</div>
                 </div>
                 <div className="text-center sm:text-left">
-                  <div className="text-3xl md:text-4xl font-bold text-green-400">95%</div>
-                  <div className="text-sm text-white/60">Placement Rate</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400">95%</div>
+                  <div className="text-xs sm:text-sm text-white/60">Placement Rate</div>
                 </div>
                 <div className="text-center sm:text-left">
-                  <div className="text-3xl md:text-4xl font-bold text-yellow-400">A+</div>
-                  <div className="text-sm text-white/60">NAAC Accredited</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">A+</div>
+                  <div className="text-xs sm:text-sm text-white/60">NAAC Accredited</div>
                 </div>
               </div>
             </div>
 
             {/* Right Content - Feature Cards */}
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-slide-left">
+            <div className="hidden md:grid grid-cols-2 gap-4 animate-slide-left">
               {/* Card 1 */}
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 h-[160px]">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 min-h-[140px] lg:h-[160px]">
                 <div className="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -189,7 +189,7 @@ const LandingPage = ({ onFormSuccess }) => {
               </div>
 
               {/* Card 2 */}
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 h-[160px]">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 min-h-[140px] lg:h-[160px]">
                 <div className="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-4">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -200,7 +200,7 @@ const LandingPage = ({ onFormSuccess }) => {
               </div>
 
               {/* Card 3 */}
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 h-[160px]">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 min-h-[140px] lg:h-[160px]">
                 <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-4">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -211,7 +211,7 @@ const LandingPage = ({ onFormSuccess }) => {
               </div>
 
               {/* Card 4 */}
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 h-[160px]">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all transform hover:-translate-y-1 min-h-[140px] lg:h-[160px]">
                 <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-4">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -235,29 +235,29 @@ const LandingPage = ({ onFormSuccess }) => {
       {/* Quick Stats Section */}
       <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all">
-              <div className="text-4xl font-bold mb-1">25+</div>
-              <div className="text-blue-100 text-sm">Years of Excellence</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-4 sm:p-6 text-white text-center transform hover:scale-105 transition-all">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">25+</div>
+              <div className="text-blue-100 text-xs sm:text-sm">Years of Excellence</div>
             </div>
-            <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all">
-              <div className="text-4xl font-bold mb-1">500+</div>
-              <div className="text-green-100 text-sm">Expert Faculty</div>
+            <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-4 sm:p-6 text-white text-center transform hover:scale-105 transition-all">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">500+</div>
+              <div className="text-green-100 text-xs sm:text-sm">Expert Faculty</div>
             </div>
-            <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all">
-              <div className="text-4xl font-bold mb-1">50+</div>
-              <div className="text-purple-100 text-sm">Acre Campus</div>
+            <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-4 sm:p-6 text-white text-center transform hover:scale-105 transition-all">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">50+</div>
+              <div className="text-purple-100 text-xs sm:text-sm">Acre Campus</div>
             </div>
-            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all">
-              <div className="text-4xl font-bold mb-1">₹12L</div>
-              <div className="text-orange-100 text-sm">Avg. Package</div>
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-4 sm:p-6 text-white text-center transform hover:scale-105 transition-all">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">₹12L</div>
+              <div className="text-orange-100 text-xs sm:text-sm">Avg. Package</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-gray-50">
+      <section id="about" className="py-10 sm:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-right">
@@ -350,7 +350,7 @@ const LandingPage = ({ onFormSuccess }) => {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-16 bg-white">
+      <section id="programs" className="py-10 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="text-secondary-500 font-semibold text-sm uppercase tracking-wider">Our Programs</span>
@@ -366,9 +366,9 @@ const LandingPage = ({ onFormSuccess }) => {
             {/* Engineering Card */}
             <div className="group bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-gray-100 overflow-hidden transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-3 bg-gradient-to-r from-blue-500 to-blue-600"></div>
-              <div className="p-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <span className="text-4xl">⚙️</span>
+              <div className="p-5 sm:p-8">
+                <div className="w-14 sm:w-16 h-14 sm:h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
+                  <span className="text-3xl sm:text-4xl">⚙️</span>
                 </div>
                 <h3 className="text-xl font-bold text-navy-900 mb-3">Engineering & Technology</h3>
                 <p className="text-gray-600 mb-6">
@@ -409,9 +409,9 @@ const LandingPage = ({ onFormSuccess }) => {
             {/* Medical Card */}
             <div className="group bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-gray-100 overflow-hidden transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-3 bg-gradient-to-r from-green-500 to-green-600"></div>
-              <div className="p-8">
-                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <span className="text-4xl">🏥</span>
+              <div className="p-5 sm:p-8">
+                <div className="w-14 sm:w-16 h-14 sm:h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
+                  <span className="text-3xl sm:text-4xl">🏥</span>
                 </div>
                 <h3 className="text-xl font-bold text-navy-900 mb-3">Medical & Health Sciences</h3>
                 <p className="text-gray-600 mb-6">
@@ -452,9 +452,9 @@ const LandingPage = ({ onFormSuccess }) => {
             {/* Management & Law Card */}
             <div className="group bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-gray-100 overflow-hidden transition-all duration-300 transform hover:-translate-y-2">
               <div className="h-3 bg-gradient-to-r from-purple-500 to-purple-600"></div>
-              <div className="p-8">
-                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <span className="text-4xl">💼</span>
+              <div className="p-5 sm:p-8">
+                <div className="w-14 sm:w-16 h-14 sm:h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
+                  <span className="text-3xl sm:text-4xl">💼</span>
                 </div>
                 <h3 className="text-xl font-bold text-navy-900 mb-3">Management & Law</h3>
                 <p className="text-gray-600 mb-6">
@@ -496,7 +496,7 @@ const LandingPage = ({ onFormSuccess }) => {
       </section>
 
       {/* Features Section - Dashboard Cards Style */}
-      <section id="features" className="py-16 bg-gray-50">
+      <section id="features" className="py-10 sm:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="text-secondary-500 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
@@ -557,7 +557,7 @@ const LandingPage = ({ onFormSuccess }) => {
       </section>
 
       {/* Campus Life Section */}
-      <section id="campus" className="py-16 bg-white">
+      <section id="campus" className="py-10 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="text-secondary-500 font-semibold text-sm uppercase tracking-wider">Campus Life</span>
@@ -570,18 +570,18 @@ const LandingPage = ({ onFormSuccess }) => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white">
-              <span className="text-5xl mb-4 block">🏛️</span>
+            <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-5 sm:p-8 text-white">
+              <span className="text-4xl sm:text-5xl mb-4 block">🏛️</span>
               <h3 className="text-xl font-bold mb-2">Smart Classrooms</h3>
               <p className="text-white/80 text-sm">Technology-enabled learning spaces with modern AV equipment</p>
             </div>
-            <div className="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl p-8 text-white">
-              <span className="text-5xl mb-4 block">📖</span>
+            <div className="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl p-5 sm:p-8 text-white">
+              <span className="text-4xl sm:text-5xl mb-4 block">📖</span>
               <h3 className="text-xl font-bold mb-2">Digital Library</h3>
               <p className="text-white/80 text-sm">24/7 access to millions of e-books, journals, and research papers</p>
             </div>
-            <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-8 text-white">
-              <span className="text-5xl mb-4 block">⚽</span>
+            <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-5 sm:p-8 text-white">
+              <span className="text-4xl sm:text-5xl mb-4 block">⚽</span>
               <h3 className="text-xl font-bold mb-2">Sports Complex</h3>
               <p className="text-white/80 text-sm">Olympic-standard facilities for various indoor and outdoor sports</p>
             </div>
@@ -590,7 +590,7 @@ const LandingPage = ({ onFormSuccess }) => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-navy-900 via-primary-800 to-primary-900 text-white relative overflow-hidden">
+      <section className="py-10 sm:py-16 bg-gradient-to-br from-navy-900 via-primary-800 to-primary-900 text-white relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-500 rounded-full filter blur-3xl"></div>
@@ -602,15 +602,15 @@ const LandingPage = ({ onFormSuccess }) => {
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
             <span className="text-sm">Limited Seats Available</span>
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 sm:mb-6">
             Ready to Begin Your <span className="text-secondary-400">Success Story?</span>
           </h2>
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-2xl mx-auto">
             Our AI-powered admissions team will call you within 24 hours to guide you through the application process and answer all your questions.
           </p>
           <button
             onClick={scrollToForm}
-            className="group bg-secondary-500 hover:bg-secondary-600 text-white font-bold px-10 py-5 rounded-xl text-lg transition-all transform hover:scale-105 shadow-xl inline-flex items-center gap-3"
+            className="group bg-secondary-500 hover:bg-secondary-600 text-white font-bold px-6 sm:px-10 py-4 sm:py-5 rounded-xl text-base sm:text-lg transition-all transform hover:scale-105 shadow-xl inline-flex items-center gap-3"
           >
             Apply Now - It's Free!
             <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -622,7 +622,7 @@ const LandingPage = ({ onFormSuccess }) => {
       </section>
 
       {/* Lead Form Section */}
-      <section id="apply-form" className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section id="apply-form" className="py-12 sm:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-100 rounded-full opacity-50 blur-3xl"></div>
@@ -634,10 +634,10 @@ const LandingPage = ({ onFormSuccess }) => {
             <span className="inline-block bg-primary-100 text-primary-600 text-sm font-semibold px-4 py-2 rounded-full mb-4">
               📝 APPLICATION FORM
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-navy-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-navy-900 mb-4">
               Start Your Journey Today
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
               Take the first step towards your dream career. Fill out the form and our admissions team will contact you within 24 hours.
             </p>
           </div>
@@ -678,10 +678,10 @@ const LandingPage = ({ onFormSuccess }) => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-navy-900 text-white py-12">
+      <footer className="bg-navy-900 text-white py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
+            <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-3 mb-4">
                 <img src={sgtuLogo} alt="SGT University" className="w-10 h-10 object-contain" />
                 <div>
